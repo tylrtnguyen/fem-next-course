@@ -1,7 +1,9 @@
 import nc from 'next-connect'
 import notes from '../../../src/data/data'
+import cors from 'cors';
 
 const handler = nc()
+  .use(cors())
   .get((req, res) => {
     res.json({data: notes})
   })

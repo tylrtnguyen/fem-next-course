@@ -1,10 +1,12 @@
 // pages/api/note/[id].js
 import nc from 'next-connect'
 import notes from '../../../src/data/data'
+import cors from 'cors';
 
 const getNote = id => notes.find(n => n.id === parseInt(id))
 
 const handler = nc()
+  .use(cors())
   .get((req, res) => {
     
     const note = getNote(req.query.id)
